@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Taigerlily — Funding Roadmap for Nonprofits</title>
+<title>Taigerlily — Funding Roadmap</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -69,7 +69,7 @@
 
   /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 24px; height: 52px; display: flex; align-items: center; gap: 16px; overflow: hidden; }
-  .nav-logo { font-weight: 700; font-size: 15px; letter-spacing: 0.06em; color: var(--text-1); text-transform: uppercase; white-space: nowrap; flex-shrink: 0; cursor: pointer; }
+  .nav-logo { font-weight: 700; font-size: 15px; letter-spacing: 0.06em; color: var(--text-1); text-transform: uppercase; white-space: nowrap; flex-shrink: 0; cursor: pointer; text-decoration: none; }
   .nav-logo span { color: var(--accent); }
   .nav-powered { font-size: 10px; color: var(--text-4); letter-spacing: 0.05em; border-left: 1px solid var(--border); padding-left: 14px; flex-shrink: 0; white-space: nowrap; }
   .nav-tabs { display: flex; gap: 2px; flex: 1; overflow-x: auto; scrollbar-width: none; margin-left: 8px; }
@@ -132,7 +132,7 @@
   .insight-bar { margin: 0 40px 24px; padding: 20px 24px; background: var(--bg-1); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; font-size: 15px; font-style: italic; line-height: 1.65; color: var(--text-2); }
   .insight-bar strong { color: var(--accent); font-style: normal; font-weight: 700; }
 
-  /* FUNDING MATRIX */
+  /* MATRIX */
   .matrix-wrap { margin: 0 40px 28px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--bg-1); }
   .matrix-bar { padding: 12px 20px; background: var(--bg-2); border-bottom: 1px solid var(--border); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
   .matrix-table { width: 100%; border-collapse: collapse; }
@@ -163,7 +163,7 @@
   .phase-info { flex: 1; }
   .phase-tag { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 2px; font-weight: 600; }
   .phase-card.p1 .phase-tag { color: var(--ruby); }
-  .phase-card.p2 .phase-tag { color: var(--gold); }
+  .phase-card.p2 .phase-tag { color: var(--gold-dim); }
   .phase-card.p3 .phase-tag { color: var(--accent); }
   .phase-title { font-size: 16px; font-weight: 700; color: var(--text-1); }
   .phase-sub { font-size: 11px; color: var(--text-4); margin-top: 2px; }
@@ -172,8 +172,7 @@
   .phase-body { display: none; padding: 0 22px 22px; border-top: 1px solid var(--border); }
   .phase-card.open .phase-body { display: block; }
   .action-list { list-style: none; margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
-  .action-item { display: grid; grid-template-columns: 22px 1fr auto; gap: 10px; align-items: start; padding: 12px; background: var(--bg-2); border: 1px solid var(--bg-3); border-radius: 6px; transition: border-color 0.2s; }
-  .action-item:hover { border-color: var(--border-strong); }
+  .action-item { display: grid; grid-template-columns: 22px 1fr auto; gap: 10px; align-items: start; padding: 12px; background: var(--bg-2); border: 1px solid var(--bg-3); border-radius: 6px; }
   .action-n { font-size: 10px; color: var(--text-4); padding-top: 1px; }
   .action-body { font-size: 12px; color: var(--text-1); line-height: 1.5; }
   .action-body strong { display: block; font-size: 12px; font-weight: 700; margin-bottom: 2px; }
@@ -182,38 +181,119 @@
   .p-soon { background: rgba(201,168,76,0.12); color: var(--gold-dim); border: 1px solid rgba(201,168,76,0.2); }
   .p-later { background: rgba(45,110,78,0.08); color: var(--accent); border: 1px solid rgba(45,110,78,0.15); }
 
-  /* PIPELINE + ROADMAP */
-  .pipeline-roadmap-wrap { padding: 26px 40px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .pipeline-col h3, .roadmap-col h3 { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-  .pipeline { display: flex; flex-direction: column; gap: 0; }
-  .pipeline-step { display: flex; align-items: flex-start; gap: 12px; }
-  .pipeline-step-left { display: flex; flex-direction: column; align-items: center; }
-  .pipeline-step-num { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; background: var(--accent); color: #fff; }
-  .pipeline-connector-line { width: 2px; height: 20px; background: var(--border); margin: 3px auto; }
-  .pipeline-step-inner { flex: 1; background: var(--bg-1); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; margin-bottom: 4px; }
-  .pipeline-step-title { font-size: 12px; font-weight: 700; color: var(--text-1); }
-  .pipeline-step-desc { font-size: 11px; color: var(--text-4); margin-top: 2px; }
-  .pipeline-step-phase { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 5px; }
-  .pipeline-step-phase.p1 { color: var(--ruby); }
-  .pipeline-step-phase.p2 { color: var(--gold-dim); }
-  .pipeline-step-phase.p3 { color: var(--accent); }
+  /* ============================================================
+     PIPELINE & ROADMAP MATRIX
+     ============================================================ */
+  .pipeline-roadmap-wrap {
+    padding: 26px 40px 40px;
+    overflow-x: auto;
+  }
 
-  .roadmap-timeline { display: flex; flex-direction: column; gap: 10px; }
-  .roadmap-phase-block { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-  .roadmap-phase-header { padding: 10px 14px; font-size: 11px; font-weight: 700; color: #fff; }
-  .roadmap-phase-header.p1 { background: var(--ruby); }
-  .roadmap-phase-header.p2 { background: var(--gold); color: var(--text-1); }
-  .roadmap-phase-header.p3 { background: var(--accent); }
-  .roadmap-phase-items { padding: 10px 14px; display: flex; flex-direction: column; gap: 6px; background: var(--bg-1); }
-  .roadmap-item { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--text-2); }
-  .roadmap-item::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-  .roadmap-feeds { margin: 12px 0; padding: 10px 14px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 6px; font-size: 11px; color: var(--text-3); font-style: italic; text-align: center; }
+  .pm-grid-header {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+    min-width: 680px;
+  }
+
+  .pm-gh-phase {
+    padding: 10px 14px;
+    border-radius: 8px 8px 0 0;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .pm-gh-phase.p1 { background: #a32d2d; color: #fff; }
+  .pm-gh-phase.p2 { background: #7a6230; color: #fff; }
+  .pm-gh-phase.p3 { background: #2d6e4e; color: #fff; }
+  .pm-gh-sub { font-size: 10px; font-weight: 400; opacity: 0.8; margin-top: 2px; }
+
+  .pm-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr 1fr;
+    gap: 8px;
+    min-width: 680px;
+  }
+
+  .pm-row-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    background: #fff;
+    border: 1px solid #e4e4e0;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #444;
+  }
+
+  .pm-row-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #2d6e4e;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .pm-cell {
+    padding: 12px 14px;
+    border-radius: 8px;
+    min-height: 72px;
+  }
+
+  .pm-cell.active {
+    background: rgba(45,110,78,0.05);
+    border: 1px solid rgba(45,110,78,0.4);
+  }
+
+  .pm-cell.cell-amber {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.5);
+  }
+
+  .pm-cell.empty {
+    background: #f7f7f4;
+    border: 1px dashed #e4e4e0;
+  }
+
+  .pm-cell-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    color: #2d6e4e;
+  }
+
+  .pm-cell-label.label-amber { color: #7a6230; }
+
+  .pm-cell-desc {
+    font-size: 11px;
+    color: #666;
+    line-height: 1.5;
+  }
+
+  .pm-cell-unlock {
+    font-size: 11px;
+    color: #bbb;
+    font-style: italic;
+    line-height: 1.5;
+  }
 
   /* NOTES */
   .notes-wrap { margin: 0 40px 40px; }
   .notes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .note-card { background: var(--bg-1); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; }
-  .note-head { padding: 11px 16px; background: var(--bg-2); border-bottom: 1px solid var(--border); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); display: flex; align-items: center; gap: 8px; }
+  .note-head { padding: 11px 16px; background: var(--bg-2); border-bottom: 1px solid var(--border); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); display: flex; align-items: center; gap: 8px; }
   .note-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
   textarea.note-ta { width: 100%; min-height: 140px; background: transparent; border: none; padding: 14px 16px; color: var(--text-1); font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.75; resize: vertical; outline: none; flex: 1; }
   textarea.note-ta::placeholder { color: var(--text-4); font-style: italic; }
@@ -240,7 +320,7 @@
     .section-header { padding: 22px 18px 16px; }
     .cards-grid { grid-template-columns: 1fr; padding: 18px; }
     .phases-wrap { padding: 18px; }
-    .pipeline-roadmap-wrap { grid-template-columns: 1fr; padding: 18px 18px 32px; }
+    .pipeline-roadmap-wrap { padding: 18px 18px 32px; }
     .matrix-wrap { margin: 0 18px 22px; }
     .insight-bar { margin: 0 18px 18px; font-size: 14px; }
     .notes-wrap { margin: 0 18px 28px; }
@@ -269,8 +349,6 @@
       <p id="setup-desc">The more specific you are, the more useful your funding roadmap will be. Takes about 4 minutes.</p>
     </div>
     <div class="setup-body">
-
-      <!-- STEP 0 -->
       <div class="setup-step active" id="step-0">
         <div class="setup-field"><label class="setup-label">Organisation Name</label><input class="setup-input" id="s_org" type="text" placeholder="e.g. Riverside Community Trust"></div>
         <div class="setup-field"><label class="setup-label">Your Name & Role</label><input class="setup-input" id="s_name" type="text" placeholder="e.g. Sarah Chen, Executive Director"></div>
@@ -293,11 +371,9 @@
           </select>
         </div>
       </div>
-
-      <!-- STEP 1 -->
       <div class="setup-step" id="step-1">
-        <div class="setup-field"><label class="setup-label">Describe your project in 1–2 sentences</label><textarea class="setup-input" id="s_project" placeholder="e.g. We're developing 12 units of supported housing on donated land for women leaving domestic violence situations, with wraparound community services on site."></textarea></div>
-        <div class="setup-field"><label class="setup-label">How much funding do you need to raise?</label><input class="setup-input" id="s_amount" type="text" placeholder="e.g. £250,000 or $500,000"></div>
+        <div class="setup-field"><label class="setup-label">Describe your project in 1–2 sentences</label><textarea class="setup-input" id="s_project" placeholder="e.g. We're developing 12 units of supported housing on donated land for women leaving domestic violence situations."></textarea></div>
+        <div class="setup-field"><label class="setup-label">How much funding do you need?</label><input class="setup-input" id="s_amount" type="text" placeholder="e.g. £250,000 or $500,000"></div>
         <div class="setup-input-row">
           <div class="setup-field"><label class="setup-label">Capital or Revenue?</label>
             <select class="setup-select" id="s_funding_type">
@@ -317,8 +393,6 @@
         </div>
         <div class="setup-field"><label class="setup-label">Who does your work benefit?</label><input class="setup-input" id="s_beneficiaries" type="text" placeholder="e.g. Women aged 18–45 fleeing domestic violence in South London"></div>
       </div>
-
-      <!-- STEP 2 -->
       <div class="setup-step" id="step-2">
         <div class="setup-field"><label class="setup-label">Stage of your organisation</label>
           <select class="setup-select" id="s_stage">
@@ -327,7 +401,7 @@
             <option value="mature">Mature — 5+ years with track record</option>
           </select>
         </div>
-        <div class="setup-field"><label class="setup-label">Annual income (approximate)</label>
+        <div class="setup-field"><label class="setup-label">Annual income</label>
           <select class="setup-select" id="s_income">
             <option value="under_50k">Under £/$/€50,000</option>
             <option value="50_150k">£/$/€50,000 – 150,000</option>
@@ -346,8 +420,6 @@
           </select>
         </div>
       </div>
-
-      <!-- STEP 3 -->
       <div class="setup-step" id="step-3">
         <div class="setup-field"><label class="setup-label">Governance documents</label>
           <select class="setup-select" id="s_governance">
@@ -366,25 +438,22 @@
         <div class="setup-field"><label class="setup-label">Evidence of impact or need</label><input class="setup-input" id="s_evidence" type="text" placeholder="e.g. Case studies, waiting list data, partnership letters"><p class="setup-hint">Even informal evidence counts.</p></div>
         <div class="setup-field"><label class="setup-label">Your biggest strength</label><input class="setup-input" id="s_strength" type="text" placeholder="e.g. Strong community relationships, founder lived experience"></div>
       </div>
-
-      <!-- STEP 4 — Brand -->
       <div class="setup-step" id="step-4">
         <div class="setup-field">
           <label class="setup-label">Choose your accent colour</label>
           <div class="color-picker-row" id="color-picker">
-            <div class="color-swatch selected" data-color="#2d6e4e" data-rgb="45,110,78" style="background:#2d6e4e;" onclick="selectColor(this)" title="Forest Green"></div>
-            <div class="color-swatch" data-color="#1a5fc8" data-rgb="26,95,200" style="background:#1a5fc8;" onclick="selectColor(this)" title="Blue"></div>
-            <div class="color-swatch" data-color="#c9a84c" data-rgb="201,168,76" style="background:#c9a84c;" onclick="selectColor(this)" title="Gold"></div>
-            <div class="color-swatch" data-color="#7c3abf" data-rgb="124,58,191" style="background:#7c3abf;" onclick="selectColor(this)" title="Violet"></div>
-            <div class="color-swatch" data-color="#c05c1a" data-rgb="192,92,26" style="background:#c05c1a;" onclick="selectColor(this)" title="Amber"></div>
-            <div class="color-swatch" data-color="#1a9e8a" data-rgb="26,158,138" style="background:#1a9e8a;" onclick="selectColor(this)" title="Teal"></div>
-            <div class="color-swatch" data-color="#a32d2d" data-rgb="163,45,45" style="background:#a32d2d;" onclick="selectColor(this)" title="Ruby"></div>
+            <div class="color-swatch selected" data-color="#2d6e4e" data-rgb="45,110,78" style="background:#2d6e4e;" onclick="selectColor(this)"></div>
+            <div class="color-swatch" data-color="#1a5fc8" data-rgb="26,95,200" style="background:#1a5fc8;" onclick="selectColor(this)"></div>
+            <div class="color-swatch" data-color="#c9a84c" data-rgb="201,168,76" style="background:#c9a84c;" onclick="selectColor(this)"></div>
+            <div class="color-swatch" data-color="#7c3abf" data-rgb="124,58,191" style="background:#7c3abf;" onclick="selectColor(this)"></div>
+            <div class="color-swatch" data-color="#c05c1a" data-rgb="192,92,26" style="background:#c05c1a;" onclick="selectColor(this)"></div>
+            <div class="color-swatch" data-color="#1a9e8a" data-rgb="26,158,138" style="background:#1a9e8a;" onclick="selectColor(this)"></div>
+            <div class="color-swatch" data-color="#a32d2d" data-rgb="163,45,45" style="background:#a32d2d;" onclick="selectColor(this)"></div>
           </div>
         </div>
         <div class="setup-field" style="margin-top:8px;"><label class="setup-label">Tagline (optional)</label><input class="setup-input" id="s_tagline" type="text" placeholder="e.g. Building community from the ground up"></div>
         <div style="margin-top:16px;padding:14px 16px;background:var(--bg-2);border:1px solid var(--border);border-radius:6px;font-size:11px;color:var(--text-3);line-height:1.6;">Your personalised funding roadmap will be built from your inputs. You can edit at any time.</div>
       </div>
-
     </div>
     <div class="setup-footer">
       <button class="btn-ghost" id="setup-back-btn" onclick="setupBack()" style="display:none;">← Back</button>
@@ -409,7 +478,6 @@
 </nav>
 
 <main>
-
   <!-- READINESS -->
   <div id="readiness" class="section active">
     <div class="hero">
@@ -452,12 +520,12 @@
     <div class="phases-wrap" id="phases-wrap"></div>
   </div>
 
-  <!-- PIPELINE & ROADMAP -->
+  <!-- PIPELINE & ROADMAP MATRIX -->
   <div id="pipeline" class="section">
     <div class="section-header"><div class="section-eyebrow">Funding Journey</div><div class="section-title">Pipeline & <em>Roadmap</em></div></div>
     <div class="pipeline-roadmap-wrap">
       <div class="pm-grid-header">
-        <div class="pm-gh-empty"></div>
+        <div></div>
         <div class="pm-gh-phase p1">Month 1<div class="pm-gh-sub">Foundations</div></div>
         <div class="pm-gh-phase p2">Month 2<div class="pm-gh-sub">First Applications</div></div>
         <div class="pm-gh-phase p3">Month 3<div class="pm-gh-sub">Build & Expand</div></div>
@@ -484,7 +552,6 @@
       <p style="margin-top:12px;font-size:11px;color:var(--text-4);font-style:italic;">Your journal is saved to this browser. Don't clear your cache to keep your notes.</p>
     </div>
   </div>
-
 </main>
 
 <div class="page-footer">
@@ -644,8 +711,8 @@ function renderFromAI(ai){
   renderMatrix(ai.fundingMatrix);
   document.getElementById('matrix-insight').innerHTML=`"${ai.matrixInsight}"`;
   renderPhases(ai.phases);
-  renderPipelineAndRoadmap(ai.pipeline,ai.phases);
-  document.getElementById('pipeline-insight').innerHTML=`"${ai.pipelineInsight}"`;
+  renderPipelineMatrix();
+  document.getElementById('pipeline-insight').innerHTML=`"${ai.pipelineInsight||'Funding is sequential. Each phase builds the credibility that unlocks the next stage.'}"`;
 }
 
 function renderTable(id,rows){
@@ -700,74 +767,83 @@ function renderPhases(phases){
   document.getElementById('phase-0')?.classList.add('open');
 }
 
-function renderPipelineAndRoadmap(pipeline, phases) {
-  const grid = document.getElementById('pm-grid');
-  if (!grid) return;
+function togglePhase(i){document.getElementById(`phase-${i}`)?.classList.toggle('open');}
 
-  const defaultRows = [
-    { title: 'Funding Readiness', cells: [
-      { phase: 'p1', label: 'Action', desc: 'Governance docs, case for support, evidence of need' },
-      { phase: null },
-      { phase: null }
-    ]},
-    { title: 'Quick Win Grants', cells: [
-      { phase: 'p1', label: 'Action', desc: 'Identify 20–30 aligned trusts. Build funding database' },
-      { phase: 'p2', label: 'Submit', labelClass: 'amber', desc: '3–5 small trust applications submitted' },
-      { phase: null }
-    ]},
-    { title: 'National Lottery / Foundations', cells: [
-      { phase: null },
-      { phase: 'p2', label: 'Apply', labelClass: 'amber', desc: 'Community foundation and lottery applications submitted' },
-      { phase: 'p3', label: 'Review', desc: 'Responses in. Refine messaging from feedback' }
-    ]},
-    { title: 'Local Government', cells: [
-      { phase: null },
-      { phase: 'p2', label: 'Contact', labelClass: 'amber', desc: 'Meet local authority grants officer before applying' },
-      { phase: 'p3', label: 'Apply', desc: 'Council grant applications submitted' }
-    ]},
-    { title: 'Corporate Partnerships', cells: [
-      { phase: null },
-      { phase: null },
-      { phase: 'p3', label: 'Outreach', labelClass: 'amber', desc: '5 local businesses identified. CSR conversations started' }
-    ]},
-    { title: 'Mid-Tier Foundations', cells: [
-      { phase: null },
-      { phase: null },
-      { phase: 'p3', label: 'Research', desc: 'Identify foundations £25k–£100k. Prepare applications' }
-    ]},
-    { title: 'Major Funders & Capital', cells: [
-      { phase: null },
-      { phase: null },
-      { phase: 'unlock', desc: 'Unlocks after track record established' }
-    ]},
+function renderPipelineMatrix(){
+  const grid=document.getElementById('pm-grid');
+  if(!grid)return;
+
+  const rows=[
+    {
+      title:'Funding Readiness',
+      cells:[
+        {type:'active',label:'Action',labelClass:'',desc:'Governance docs, case for support, evidence of need'},
+        {type:'empty'},
+        {type:'empty'}
+      ]
+    },
+    {
+      title:'Quick Win Grants',
+      cells:[
+        {type:'active',label:'Action',labelClass:'',desc:'Identify 20–30 aligned trusts. Build funding database'},
+        {type:'amber',label:'Submit',labelClass:'label-amber',desc:'3–5 small trust applications submitted'},
+        {type:'empty'}
+      ]
+    },
+    {
+      title:'National Lottery / Foundations',
+      cells:[
+        {type:'empty'},
+        {type:'amber',label:'Apply',labelClass:'label-amber',desc:'Community foundation and lottery applications submitted'},
+        {type:'active',label:'Review',labelClass:'',desc:'Responses in. Refine messaging from feedback'}
+      ]
+    },
+    {
+      title:'Local Government',
+      cells:[
+        {type:'empty'},
+        {type:'amber',label:'Contact',labelClass:'label-amber',desc:'Meet local authority grants officer before applying'},
+        {type:'active',label:'Apply',labelClass:'',desc:'Council grant applications submitted'}
+      ]
+    },
+    {
+      title:'Corporate Partnerships',
+      cells:[
+        {type:'empty'},
+        {type:'empty'},
+        {type:'amber',label:'Outreach',labelClass:'label-amber',desc:'5 local businesses identified. CSR conversations started'}
+      ]
+    },
+    {
+      title:'Mid-Tier Foundations',
+      cells:[
+        {type:'empty'},
+        {type:'empty'},
+        {type:'active',label:'Research',labelClass:'',desc:'Identify foundations £25k–£100k. Prepare applications'}
+      ]
+    },
+    {
+      title:'Major Funders & Capital',
+      cells:[
+        {type:'empty'},
+        {type:'empty'},
+        {type:'unlock',desc:'Unlocks after track record established'}
+      ]
+    },
   ];
 
-  // If AI provided pipeline data, try to map it to the matrix
-  const rows = (pipeline && pipeline.length >= 6) ? pipeline.slice(0, 7).map((p, i) => {
-    const phaseMap = ['p1', 'p1', 'p2', 'p2', 'p3', 'p3', null];
-    const ph = p.phase || phaseMap[i];
-    return {
-      title: p.title,
-      cells: [
-        ph === 'p1' ? { phase: 'p1', label: 'Action', desc: p.desc } : { phase: null },
-        ph === 'p2' ? { phase: 'p2', label: 'Action', labelClass: 'amber', desc: p.desc } : { phase: null },
-        ph === 'p3' ? { phase: 'p3', label: 'Action', desc: p.desc } : (i >= 6 ? { phase: 'unlock', desc: 'Unlocks after track record established' } : { phase: null }),
-      ]
-    };
-  }) : defaultRows;
-
-  grid.innerHTML = rows.map((row, idx) => `
-    <div class="pm-row-label"><div class="pm-row-num">${idx + 1}</div>${row.title}</div>
-    ${row.cells.map(cell => {
-      if (!cell.phase) return `<div class="pm-cell empty"></div>`;
-      if (cell.phase === 'unlock') return `<div class="pm-cell empty"><div class="pm-cell-unlock">${cell.desc}</div></div>`;
-      const cls = cell.labelClass === 'amber' ? 'amber' : 'active';
-      return `<div class="pm-cell ${cls}"><div class="pm-cell-label ${cell.labelClass || ''}">${cell.label}</div><div class="pm-cell-desc">${cell.desc}</div></div>`;
+  grid.innerHTML=rows.map((row,idx)=>`
+    <div class="pm-row-label">
+      <div class="pm-row-num">${idx+1}</div>
+      ${row.title}
+    </div>
+    ${row.cells.map(cell=>{
+      if(cell.type==='empty') return `<div class="pm-cell empty"></div>`;
+      if(cell.type==='unlock') return `<div class="pm-cell empty"><div class="pm-cell-unlock">${cell.desc}</div></div>`;
+      return `<div class="pm-cell ${cell.type==='amber'?'cell-amber':'active'}"><div class="pm-cell-label ${cell.labelClass}">${cell.label}</div><div class="pm-cell-desc">${cell.desc}</div></div>`;
     }).join('')}
   `).join('');
 }
-
-function togglePhase(i){document.getElementById(`phase-${i}`)?.classList.toggle('open');}
 
 function renderTemplate(){
   const c=config;
@@ -802,17 +878,17 @@ function renderTemplate(){
 
   renderMatrix([
     {type:'Charitable Trusts & Foundations',difficulty:'Medium',timeToSecure:'3–6 months',potentialValue:'Medium–High',priority:5,recommendation:'Start here',specificAdvice:'Most accessible for small organisations. Apply to 5–8 aligned trusts in Month 1.'},
-    {type:'National Lottery / Equivalent',difficulty:'Easy',timeToSecure:'2–4 months',potentialValue:'Medium',priority:5,recommendation:'High priority',specificAdvice:'Community foundations and lottery bodies are the most accessible larger funders at your stage.'},
-    {type:'Local Government Grants',difficulty:'Medium',timeToSecure:'3–6 months',potentialValue:'Medium–High',priority:4,recommendation:'Build relationship first',specificAdvice:'Contact your local authority grants officer before applying — a conversation is worth more than a cold application.'},
-    {type:'Corporate CSR & Foundations',difficulty:'Medium',timeToSecure:'2–4 months',potentialValue:'Low–Medium',priority:3,recommendation:'Good for credibility',specificAdvice:'Identify 5 local businesses with aligned values. In-kind support and sponsorship builds credibility alongside income.'},
-    {type:'Major Individual Donors',difficulty:'Hard',timeToSecure:'6–18 months',potentialValue:'High',priority:3,recommendation:'Phase 3 onwards',specificAdvice:'Build relationship foundations now but expect results in 12+ months. Requires existing credibility and track record.'},
-    {type:'Statutory Contracts',difficulty:'Hard',timeToSecure:'6–12 months',potentialValue:'High',priority:2,recommendation:'Once established',specificAdvice:'Local authority and NHS contracts provide reliable revenue but require significant compliance capacity.'},
-    {type:'Social Investment',difficulty:'Hard',timeToSecure:'6–12 months',potentialValue:'Very High',priority:2,recommendation:'Capital projects only',specificAdvice:'Relevant if raising capital with a clear repayment model. Not suitable for pure grant-funded organisations.'},
+    {type:'National Lottery / Equivalent',difficulty:'Easy',timeToSecure:'2–4 months',potentialValue:'Medium',priority:5,recommendation:'High priority',specificAdvice:'Community foundations are the most accessible larger funders at your stage.'},
+    {type:'Local Government Grants',difficulty:'Medium',timeToSecure:'3–6 months',potentialValue:'Medium–High',priority:4,recommendation:'Build relationship first',specificAdvice:'Contact your local authority grants officer before applying.'},
+    {type:'Corporate CSR & Foundations',difficulty:'Medium',timeToSecure:'2–4 months',potentialValue:'Low–Medium',priority:3,recommendation:'Good for credibility',specificAdvice:'Identify 5 local businesses with aligned values.'},
+    {type:'Major Individual Donors',difficulty:'Hard',timeToSecure:'6–18 months',potentialValue:'High',priority:3,recommendation:'Phase 3 onwards',specificAdvice:'Build relationship foundations now but expect results in 12+ months.'},
+    {type:'Statutory Contracts',difficulty:'Hard',timeToSecure:'6–12 months',potentialValue:'High',priority:2,recommendation:'Once established',specificAdvice:'Local authority contracts provide reliable revenue but require significant compliance capacity.'},
+    {type:'Social Investment',difficulty:'Hard',timeToSecure:'6–12 months',potentialValue:'Very High',priority:2,recommendation:'Capital projects only',specificAdvice:'Relevant if raising capital with a clear repayment model.'},
   ]);
 
   document.getElementById('matrix-insight').innerHTML=`"Start with charitable trusts and lottery funding — they're the most accessible at your stage. Build your track record with smaller grants before approaching larger funders."`;
 
-  const phases=[
+  renderPhases([
     {label:'Month 1 · Foundations',title:'Get Ready to Apply',goal:'Build the readiness that funders expect',actions:[
       {title:'Complete governance documents',desc:'Ensure your constitution, trustee register, and conflicts of interest policy are in place.',priority:'now'},
       {title:'Write your case for support',desc:'A clear 1–2 page document explaining who you are, what problem you solve, and what difference you make.',priority:'now'},
@@ -823,7 +899,7 @@ function renderTemplate(){
       {title:'Submit 3–5 trust and foundation applications',desc:'Start with smaller trusts to build your track record before approaching larger funders.',priority:'soon'},
       {title:'Apply to National Lottery or equivalent',desc:'Community foundations are the most accessible larger funders for organisations at your stage.',priority:'soon'},
       {title:'Contact your local authority funding team',desc:'A conversation before applying is worth more than the best cold application.',priority:'soon'},
-      {title:'Schedule 5 funder relationship meetings',desc:'Reach out to programme officers at priority funders — not to ask for money, but to introduce your work.',priority:'soon'},
+      {title:'Schedule 5 funder relationship meetings',desc:'Reach out to programme officers at priority funders to introduce your work.',priority:'soon'},
     ]},
     {label:'Month 3 · Build and Expand',title:'Review, Refine and Scale',goal:'Learn from early applications and expand the pipeline',actions:[
       {title:'Review and refine applications',desc:'Use any feedback from early applications to improve your case for support.',priority:'later'},
@@ -831,21 +907,9 @@ function renderTemplate(){
       {title:'Begin larger foundation applications',desc:'With early evidence in place, approach mid-tier foundations (£25k–£100k).',priority:'later'},
       {title:'Build your impact reporting',desc:'Start tracking and reporting outputs and outcomes now. Funders require evidence of impact for renewal.',priority:'later'},
     ]},
-  ];
+  ]);
 
-  renderPhases(phases);
-
-  const pipeline=[
-    {title:'Funding Readiness',desc:'Governance, evidence, and case for support in place',phase:'p1',phaseLabel:'Month 1'},
-    {title:'Quick Win Grants',desc:'Small trusts and foundations — build track record',phase:'p1',phaseLabel:'Month 1'},
-    {title:'National Lottery / Community Funds',desc:'Mid-tier accessible funding',phase:'p2',phaseLabel:'Month 2'},
-    {title:'Local Government Grants',desc:'Council and statutory funding',phase:'p2',phaseLabel:'Month 2'},
-    {title:'Corporate Partnerships',desc:'CSR and sponsorship for credibility',phase:'p3',phaseLabel:'Month 3'},
-    {title:'Mid-Tier Foundations',desc:'Larger strategic grants as evidence builds',phase:'p3',phaseLabel:'Month 3'},
-    {title:'Major Funders & Capital',desc:'Lead funders once track record is established',phase:null,phaseLabel:''},
-  ];
-
-  renderPipelineAndRoadmap(pipeline,phases);
+  renderPipelineMatrix();
   document.getElementById('pipeline-insight').innerHTML=`"Funding is sequential. Each phase builds the credibility that unlocks the next stage. Don't apply everywhere at once — start where you're most likely to succeed."`;
 }
 
