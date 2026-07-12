@@ -707,7 +707,8 @@ function renderPipelineAndRoadmap(pipeline, phases) {
   const defaultRows = [
     { title: 'Funding Readiness', cells: [
       { phase: 'p1', label: 'Action', desc: 'Governance docs, case for support, evidence of need' },
-      { phase: null }, { phase: null }
+      { phase: null },
+      { phase: null }
     ]},
     { title: 'Quick Win Grants', cells: [
       { phase: 'p1', label: 'Action', desc: 'Identify 20–30 aligned trusts. Build funding database' },
@@ -725,34 +726,42 @@ function renderPipelineAndRoadmap(pipeline, phases) {
       { phase: 'p3', label: 'Apply', desc: 'Council grant applications submitted' }
     ]},
     { title: 'Corporate Partnerships', cells: [
-      { phase: null }, { phase: null },
+      { phase: null },
+      { phase: null },
       { phase: 'p3', label: 'Outreach', labelClass: 'amber', desc: '5 local businesses identified. CSR conversations started' }
     ]},
     { title: 'Mid-Tier Foundations', cells: [
-      { phase: null }, { phase: null },
+      { phase: null },
+      { phase: null },
       { phase: 'p3', label: 'Research', desc: 'Identify foundations £25k–£100k. Prepare applications' }
     ]},
     { title: 'Major Funders & Capital', cells: [
-      { phase: null }, { phase: null },
+      { phase: null },
+      { phase: null },
       { phase: 'unlock', desc: 'Unlocks after track record established' }
     ]},
   ];
 
-  const rows = (pipeline && pipeline.length) ? pipeline.map((p, i) => ({
-    title: p.title,
-    cells: [
-      p.phase === 'p1' ? { phase: 'p1', label: 'Action', desc: p.desc } : { phase: null },
-      p.phase === 'p2' ? { phase: 'p2', label: 'Action', labelClass: 'amber', desc: p.desc } : { phase: null },
-      p.phase === 'p3' ? { phase: 'p3', label: 'Action', desc: p.desc } : (p.phase === null && i >= 5 ? { phase: 'unlock', desc: 'Unlocks after track record established' } : { phase: null }),
-    ]
-  })) : defaultRows;
+  // If AI provided pipeline data, try to map it to the matrix
+  const rows = (pipeline && pipeline.length >= 6) ? pipeline.slice(0, 7).map((p, i) => {
+    const phaseMap = ['p1', 'p1', 'p2', 'p2', 'p3', 'p3', null];
+    const ph = p.phase || phaseMap[i];
+    return {
+      title: p.title,
+      cells: [
+        ph === 'p1' ? { phase: 'p1', label: 'Action', desc: p.desc } : { phase: null },
+        ph === 'p2' ? { phase: 'p2', label: 'Action', labelClass: 'amber', desc: p.desc } : { phase: null },
+        ph === 'p3' ? { phase: 'p3', label: 'Action', desc: p.desc } : (i >= 6 ? { phase: 'unlock', desc: 'Unlocks after track record established' } : { phase: null }),
+      ]
+    };
+  }) : defaultRows;
 
-  grid.innerHTML = rows.map(row => `
-    <div class="pm-row-label"><div class="pm-row-num">${rows.indexOf(row) + 1}</div>${row.title}</div>
+  grid.innerHTML = rows.map((row, idx) => `
+    <div class="pm-row-label"><div class="pm-row-num">${idx + 1}</div>${row.title}</div>
     ${row.cells.map(cell => {
       if (!cell.phase) return `<div class="pm-cell empty"></div>`;
       if (cell.phase === 'unlock') return `<div class="pm-cell empty"><div class="pm-cell-unlock">${cell.desc}</div></div>`;
-      const cls = cell.phase === 'p2' ? 'amber' : 'active';
+      const cls = cell.labelClass === 'amber' ? 'amber' : 'active';
       return `<div class="pm-cell ${cls}"><div class="pm-cell-label ${cell.labelClass || ''}">${cell.label}</div><div class="pm-cell-desc">${cell.desc}</div></div>`;
     }).join('')}
   `).join('');
