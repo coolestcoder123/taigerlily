@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taigerlily — Funding Roadmap for Nonprofits</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body { font-family: 'DM Sans', sans-serif; background: #f5f5f2; color: #111; min-height: 100vh; }
+
+  /* NAV */
+  .nav { background: #fff; border-bottom: 1px solid #e4e4e0; padding: 0 40px; height: 52px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-weight: 700; font-size: 15px; letter-spacing: 0.06em; color: #111; text-transform: uppercase; }
+  .nav-logo span { color: #2d6e4e; }
+  .nav-powered { font-size: 10px; color: #bbb; letter-spacing: 0.06em; }
+
+  /* HERO */
+  .hero { background: #fff; border-bottom: 1px solid #e4e4e0; padding: 80px 40px 64px; text-align: center; }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #c9a84c; font-weight: 600; margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(36px, 5.5vw, 60px); font-weight: 700; color: #111; line-height: 1.06; letter-spacing: -0.025em; margin-bottom: 16px; }
+  .hero h1 em { color: #2d6e4e; font-style: italic; font-weight: 600; }
+  .hero-sub { font-size: 15px; color: #888; max-width: 520px; margin: 0 auto 36px; line-height: 1.7; }
+
+  .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: #2d6e4e; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 32px; border-radius: 6px; text-decoration: none; transition: background 0.2s; border: none; cursor: pointer; }
+  .hero-cta:hover { background: #3a8a62; }
+  .hero-cta-ghost { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #888; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; padding: 14px 20px; border-radius: 6px; text-decoration: none; transition: color 0.2s; border: none; cursor: pointer; }
+  .hero-cta-ghost:hover { color: #333; }
+  .hero-ctas { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+
+  /* STATS BAR */
+  .stats-bar { background: #2d6e4e; padding: 28px 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; }
+  .stat-item { text-align: center; padding: 8px 20px; }
+  .stat-num { font-size: 28px; font-weight: 700; color: #fff; letter-spacing: -0.02em; line-height: 1; }
+  .stat-label { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px; letter-spacing: 0.04em; }
+
+  /* WHAT IT DOES */
+  .what { padding: 64px 40px; max-width: 960px; margin: 0 auto; }
+  .what-eyebrow { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #bbb; font-weight: 600; margin-bottom: 8px; }
+  .what-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; color: #111; letter-spacing: -0.02em; margin-bottom: 40px; }
+  .what-title em { color: #2d6e4e; font-style: italic; }
+
+  .what-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .what-card { background: #fff; border: 1px solid #e4e4e0; border-radius: 10px; padding: 26px; border-top: 3px solid transparent; }
+  .what-card:nth-child(1) { border-top-color: #a32d2d; }
+  .what-card:nth-child(2) { border-top-color: #c9a84c; }
+  .what-card:nth-child(3) { border-top-color: #2d6e4e; }
+  .what-card:nth-child(4) { border-top-color: #1a5fc8; }
+  .what-card:nth-child(5) { border-top-color: #7c3abf; }
+  .what-card:nth-child(6) { border-top-color: #2d6e4e; }
+  .what-num { font-size: 32px; font-weight: 700; letter-spacing: -0.03em; opacity: 0.12; margin-bottom: 10px; color: #2d6e4e; }
+  .what-card-title { font-size: 14px; font-weight: 700; color: #111; margin-bottom: 7px; }
+  .what-card-desc { font-size: 12px; color: #888; line-height: 1.65; }
+
+  /* WHO ITS FOR */
+  .who { background: #fff; border-top: 1px solid #e4e4e0; border-bottom: 1px solid #e4e4e0; padding: 64px 40px; }
+  .who-inner { max-width: 960px; margin: 0 auto; }
+  .who-eyebrow { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #bbb; font-weight: 600; margin-bottom: 8px; }
+  .who-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; color: #111; letter-spacing: -0.02em; margin-bottom: 36px; }
+  .who-title em { color: #2d6e4e; font-style: italic; }
+  .who-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .who-card { background: #f5f5f2; border: 1px solid #e4e4e0; border-radius: 10px; padding: 22px 24px; display: flex; gap: 16px; align-items: flex-start; }
+  .who-icon { width: 38px; height: 38px; border-radius: 8px; background: rgba(45,110,78,0.1); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .who-card-title { font-size: 13px; font-weight: 700; color: #111; margin-bottom: 4px; }
+  .who-card-desc { font-size: 12px; color: #888; line-height: 1.6; }
+  .who-quote { margin-top: 8px; font-size: 11px; color: #2d6e4e; font-style: italic; }
+
+  /* HOW IT WORKS */
+  .how { padding: 64px 40px; max-width: 960px; margin: 0 auto; }
+  .how-eyebrow { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #bbb; font-weight: 600; margin-bottom: 8px; }
+  .how-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; color: #111; letter-spacing: -0.02em; margin-bottom: 40px; }
+  .how-title em { color: #2d6e4e; font-style: italic; }
+  .how-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; position: relative; }
+  .how-step { background: #fff; border: 1px solid #e4e4e0; border-radius: 10px; padding: 22px 18px; text-align: center; position: relative; }
+  .how-step-num { width: 36px; height: 36px; border-radius: 50%; background: #2d6e4e; color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
+  .how-step-title { font-size: 13px; font-weight: 700; color: #111; margin-bottom: 6px; }
+  .how-step-desc { font-size: 11px; color: #888; line-height: 1.6; }
+  .how-arrow { display: flex; align-items: center; justify-content: center; font-size: 18px; color: #ccc; padding-top: 30px; }
+
+  /* INSIGHT BAR */
+  .insight-section { background: #2d6e4e; padding: 48px 40px; text-align: center; }
+  .insight-quote { font-size: clamp(18px, 2.5vw, 26px); font-style: italic; color: #fff; max-width: 680px; margin: 0 auto; line-height: 1.55; font-weight: 400; }
+  .insight-quote strong { font-style: normal; font-weight: 700; color: rgba(255,255,255,0.85); }
+  .insight-attr { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 14px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* CTA BOTTOM */
+  .cta-bottom { background: #fff; border-top: 1px solid #e4e4e0; padding: 64px 40px; text-align: center; }
+  .cta-bottom h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 700; color: #111; letter-spacing: -0.02em; margin-bottom: 12px; }
+  .cta-bottom h2 em { color: #2d6e4e; font-style: italic; }
+  .cta-bottom p { font-size: 14px; color: #888; margin-bottom: 32px; }
+  .cta-bottom-note { font-size: 11px; color: #bbb; margin-top: 14px; font-style: italic; }
+
+  /* FOOTER */
+  .footer { padding: 20px 40px; border-top: 1px solid #e4e4e0; background: #fff; display: flex; justify-content: space-between; align-items: center; }
+  .footer-brand { font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #bbb; }
+  .footer-brand span { color: #2d6e4e; }
+  .footer-note { font-size: 10px; color: #bbb; font-style: italic; }
+  .footer-powered { font-size: 10px; color: #bbb; }
+
+  @media (max-width: 760px) {
+    .nav { padding: 0 18px; }
+    .hero { padding: 48px 18px 40px; }
+    .stats-bar { grid-template-columns: 1fr; gap: 0; }
+    .what { padding: 40px 18px; }
+    .what-grid { grid-template-columns: 1fr; }
+    .who { padding: 40px 18px; }
+    .who-grid { grid-template-columns: 1fr; }
+    .how { padding: 40px 18px; }
+    .how-steps { grid-template-columns: 1fr 1fr; }
+    .insight-section { padding: 36px 18px; }
+    .cta-bottom { padding: 40px 18px; }
+    .footer { padding: 16px 18px; flex-direction: column; gap: 6px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">TAIGER<span>LILY</span></div>
+  <div class="nav-powered">powered by Dandelaion</div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Funding Roadmap for Nonprofits</div>
+  <h1>Your <em>funding strategy</em>,<br>built in minutes</h1>
+  <p class="hero-sub">Stop guessing where to apply. Taigerlily gives small nonprofits a prioritised, AI-powered funding roadmap — the kind that usually costs thousands in consultant fees.</p>
+  <div class="hero-ctas">
+    <a href="/roadmap" class="hero-cta">Build My Funding Roadmap →</a>
+    <a href="#how" class="hero-cta-ghost">See how it works</a>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">93%</div>
+    <div class="stat-label">of nonprofits too small to afford a consultant</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">4 mins</div>
+    <div class="stat-label">to complete the intake wizard</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">Free</div>
+    <div class="stat-label">no account, no credit card, no catch</div>
+  </div>
+</div>
+
+<div class="what">
+  <div class="what-eyebrow">What you get</div>
+  <div class="what-title">A complete <em>funding toolkit</em> — specific to you</div>
+  <div class="what-grid">
+    <div class="what-card">
+      <div class="what-num">01</div>
+      <div class="what-card-title">Funding Readiness Assessment</div>
+      <div class="what-card-desc">An honest read on where you stand — your strengths, your gaps, and what to fix before approaching any funder.</div>
+    </div>
+    <div class="what-card">
+      <div class="what-num">02</div>
+      <div class="what-card-title">Prioritised Funding Matrix</div>
+      <div class="what-card-desc">Every funding source ranked by priority for your specific cause, country, and stage — with a specific recommendation for each one.</div>
+    </div>
+    <div class="what-card">
+      <div class="what-num">03</div>
+      <div class="what-card-title">90-Day Action Plan</div>
+      <div class="what-card-desc">Three phases of specific, sequenced actions. Not generic advice — a plan built around your actual situation and funding target.</div>
+    </div>
+    <div class="what-card">
+      <div class="what-num">04</div>
+      <div class="what-card-title">Pipeline & Roadmap Matrix</div>
+      <div class="what-card-desc">A visual grid showing exactly which actions in which month unlock which funding stages — so nothing falls through the cracks.</div>
+    </div>
+    <div class="what-card">
+      <div class="what-num">05</div>
+      <div class="what-card-title">AI-Generated Insight</div>
+      <div class="what-card-desc">Every section is generated by Claude based on your specific inputs — not a template with your name dropped in.</div>
+    </div>
+    <div class="what-card">
+      <div class="what-num">06</div>
+      <div class="what-card-title">Organisation Journal</div>
+      <div class="what-card-desc">Log your funding wins, blockers, funder relationships, and ideas. Saved to your browser so you can pick up where you left off.</div>
+    </div>
+  </div>
+</div>
+
+<div class="who">
+  <div class="who-inner">
+    <div class="who-eyebrow">Who it's for</div>
+    <div class="who-title">Built for the <em>small nonprofit</em> doing big work</div>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-icon">🏠</div>
+        <div>
+          <div class="who-card-title">Housing & Homelessness</div>
+          <div class="who-card-desc">Community land trusts, supported housing projects, and homelessness charities trying to secure capital and revenue funding for new developments.</div>
+          <div class="who-quote">"We have donated land but no idea how to fund the build."</div>
+        </div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">🌱</div>
+        <div>
+          <div class="who-card-title">Community Development</div>
+          <div class="who-card-desc">Grassroots organisations, community centres, and local charities with passionate teams and no dedicated fundraiser on staff.</div>
+          <div class="who-quote">"We know the work matters. We just don't know where to start with funding."</div>
+        </div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">🧠</div>
+        <div>
+          <div class="who-card-title">Mental Health & Wellbeing</div>
+          <div class="who-card-desc">Small mental health charities and wellbeing programmes that need a mix of statutory and trust funding to sustain their services.</div>
+          <div class="who-quote">"We keep getting rejected and don't know why."</div>
+        </div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">📚</div>
+        <div>
+          <div class="who-card-title">Education & Youth</div>
+          <div class="who-card-desc">Youth clubs, education programmes, and early intervention organisations working with young people who need reliable, recurring revenue funding.</div>
+          <div class="who-quote">"We've been running on goodwill. We need a real funding strategy."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="how" id="how">
+  <div class="how-eyebrow">How it works</div>
+  <div class="how-title">From intake to <em>roadmap</em> in four steps</div>
+  <div class="how-steps">
+    <div class="how-step">
+      <div class="how-step-num">1</div>
+      <div class="how-step-title">Tell us about your organisation</div>
+      <div class="how-step-desc">Answer focused questions about your cause, project, funding target, and current situation. Takes about 4 minutes.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">2</div>
+      <div class="how-step-title">We assess your readiness</div>
+      <div class="how-step-desc">Your answers go to Claude — an AI that reads your specific combination of factors and generates a genuine assessment.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">3</div>
+      <div class="how-step-title">Your roadmap is built</div>
+      <div class="how-step-desc">A prioritised funding matrix, 90-day action plan, and pipeline roadmap — all specific to your organisation, cause, and country.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">4</div>
+      <div class="how-step-title">Return and track progress</div>
+      <div class="how-step-desc">Your roadmap saves to your browser. Come back to update your journal, check your pipeline, and track your funding progress.</div>
+    </div>
+  </div>
+</div>
+
+<div class="insight-section">
+  <div class="insight-quote">"The same strategic thinking that helps funded organisations navigate the funding landscape — <strong>now accessible to every small nonprofit, for free.</strong>"</div>
+  <div class="insight-attr">Taigerlily — powered by Dandelaion</div>
+</div>
+
+<div class="cta-bottom">
+  <h2>Ready to build your <em>funding roadmap?</em></h2>
+  <p>No account needed. No credit card. Just your organisation's story and a few focused questions.</p>
+  <a href="/roadmap" class="hero-cta">Build My Funding Roadmap →</a>
+  <div class="cta-bottom-note">Your data is saved only to your browser — private, secure, and always yours.</div>
+</div>
+
+<footer class="footer">
+  <div class="footer-brand">TAIGER<span>LILY</span></div>
+  <div class="footer-note">Funding roadmap for nonprofits</div>
+  <div class="footer-powered">powered by Dandelaion</div>
+</footer>
+
+</body>
+</html>
